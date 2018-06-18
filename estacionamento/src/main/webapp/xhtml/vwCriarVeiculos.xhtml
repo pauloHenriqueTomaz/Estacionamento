@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<link rel="StyleSheet" type="text/css" href="../../css/estilo.css"></link>
+<script language="javascript" src="../../js/criarVeiculo.js"
+	charset="ISO-8859-1" />
+</head>
+<h:body>
+	<h:form id="formulario">
+		<h:messages id="messages" />
+		<h:panelGrid columns="2">
+
+			<h:inputHidden id="idveiculo"
+				value="#{veiculoController.veiculoBean.idveiculo}" />
+			<br></br>
+			<h:outputLabel for="descVeiculo" value="Descrição do veiculo" />
+			<h:inputText id="descVeiculo"
+				value="#{veiculoController.veiculoBean.descVeiculo}"/>
+
+			<h:outputLabel for="tempUso" value="Tempo de Uso" />
+			<h:inputText id="tempUso"
+				value="#{veiculoController.veiculoBean.tempUso}"
+				onclick="return validarTempo()" />
+
+			<h:outputLabel for="locVaga" value="Local da Vaga" />
+			<h:inputText id="locVaga"
+				value="#{veiculoController.veiculoBean.locVaga}"
+				onclick="return validarLocal()" />
+
+			<h:outputLabel for="placVeiculo" value="Placa do Veiculo" />
+			<h:inputText id="placVeiculo"
+				value="#{veiculoController.veiculoBean.placVeiculo}"
+				onclick="return validarPlaca(placVeiculo)" />
+
+			<h:outputLabel for="dataEntrada" value="Data de Entrada" />
+			<h:inputText id="dataEntrada"
+				value="#{veiculoController.veiculoBean.dataEntrada}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>
+
+			<h:outputLabel for="dataSaida" value="Data de Saida" />
+			<h:inputText id="dataSaida"
+				value="#{veiculoController.veiculoBean.dataSaida}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>
+
+			<h:outputLabel for="valorPagar" value="Valor a Pagar" />
+			<h:inputText id="valorPagar"
+				value="#{veiculoController.veiculoBean.valorPagar}"/>
+
+			<h:commandButton class="btn btn-green" value="Salvar" action="#{veiculoController.incluir}" />
+			<h:commandButton class="btn btn-green" action="inicio" value="Voltar"></h:commandButton>
+		</h:panelGrid>
+		<center>
+			<img src="../images/logo.jpg" />
+		</center>
+	</h:form>
+</h:body>
+</html>
+

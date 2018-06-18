@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<head>  
+		<link rel="StyleSheet" type="text/css" href="css/estilo.css"></link>
+	</head>
+	<body>
+		<f:view>
+			<h:form id="formulario">
+				<br/>
+				<center><h1>Estacionamento de Veiculos</h1></center>
+				<br/>
+				<center><h:commandButton class="btn btn-green" action="#{veiculoController.listar}" value="Listar Veiculos" id="listar"/></center>
+				<br></br>
+				<center><h:commandButton class="btn btn-green" action="#{veiculoController.criar}" value="Cadastrar Novo" id="criar"/></center>
+				<h:messages />
+			</h:form>
+			<center><img src="images/logo.jpg"/></center>	
+		</f:view>
+
+	</body>
+
+</html>

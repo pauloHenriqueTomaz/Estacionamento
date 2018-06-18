@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<head>  
+		<link rel="StyleSheet" type="text/css" href="../../css/estilo.css"></link>  
+		<script language="javascript" src="../../js/listarVeiculos.js" charset="ISO-8859-1"/>
+	</head>
+	<body onload="desmarcarTodos()">
+		<f:view>
+			<h:form id="formulario">
+			
+				<input type="hidden" id="idveiculo" name="idveiculo"/>
+				<br/>
+				<h:dataTable border="1" styleClass="sample" id="veiculos" value="#{veiculoController.listaveiculoBean}" var="veiculo">
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Descrição do Veiculo" />
+						</f:facet>
+						<h:inputHidden value="#{veiculo.idveiculo}" />
+						<h:outputLabel value="#{veiculo.descVeiculo}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Tempo de Uso" />
+						</f:facet>
+						<h:outputLabel value="#{veiculo.tempUso} Horas" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Local da Vaga" />
+						</f:facet>
+						<h:outputLabel value="#{veiculo.locVaga}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Placa do Veiculo" />
+						</f:facet>
+						<h:outputLabel value="#{veiculo.placVeiculo}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Data de Entrada" />
+						</f:facet>
+						<h:outputLabel value="#{veiculo.dataEntrada}" > <f:convertDateTime  pattern="dd/MM/yyyy" /></h:outputLabel>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Data de Saida" />
+						</f:facet>
+						<h:outputLabel value="#{veiculo.dataEntrada}" > <f:convertDateTime pattern="dd/MM/yyyy" /></h:outputLabel>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Valor a Pagar" />
+						</f:facet>
+						<h:outputLabel value="#{veiculo.valorPagar} Reais"/>
+					</h:column>
+				<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="" />
+						</f:facet>
+						<h:message for="#{veiculoController}"/>
+						<h:selectOneRadio id="selecionado" value="#{veiculoController.veiculoBean.idveiculo}" onclick="selecionarItem('idveiculo',this);">
+							<f:selectItem itemValue="#{veiculo.idveiculo}"/>
+						</h:selectOneRadio>
+					</h:column>
+					
+				</h:dataTable>
+				<br/>
+				<h:commandButton class="btn btn-green" value="Novo" action="#{veiculoController.criar}" />
+				<h:commandButton class="btn btn-green" value="Editar" action="#{veiculoController.consultar}" onclick="return validarSelecionado()" />
+				<h:commandButton class="btn btn-red" value="Excluir" action="#{veiculoController.excluir}"  onclick="return validarSelecionado()"/>
+				<h:commandButton class="btn btn-purple" action="inicio" value="Voltar"></h:commandButton>
+				<br></br>
+				<h:messages />
+				</h:form>
+		</f:view>
+	</body>
+
+</html>
